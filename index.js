@@ -1,4 +1,24 @@
 // ---------------------------------------------------
+// BLOGTOC
+// ---------------------------------------------------
+// BlogToc creates a clickable Table Of Contents for
+// Blogger Blogs.
+// It uses the JSON post feed, and create a ToC of it.
+// The ToC can be sorted by title or by date, both
+// ascending and descending, and can be filtered by
+// label.
+// ---------------------------------------------------
+// Author: Beautiful Beta
+// Url: http://beautifulbeta.blogspot.com
+// Version: 2
+// Date: 2007-04-12
+// ---------------------------------------------------
+// Modified by Aneesh 
+// www.bloggerplugins.org
+// Date : 02-08-2011
+// global arrays
+//تعريب: عالم التكنولوجيا والاستثمار
+//www.techandinv.com
 
    var postTitle = new Array();     // array of posttitles
    var postUrl = new Array();       // array of posturls
@@ -214,6 +234,14 @@ function displayToc(filter) {
         }
    }
    tocTable += '</table>';
+   if (numDisplayed == postTitle.length) {
+      var tocNote1 = '<span class="toc-note1"> عدد الموضوعات ' + postTitle.length + ' موضوع<br/></span>'; }
+   else {
+      var tocNote1 = '<span class="toc-note1">عدد الموضوعات ' + numDisplayed + ' موضوع \'';
+      tocNote1 += postFilter + '\' من '+ postTitle.length + ' موضوع <br/></span>';
+   }
+   tocdiv.innerHTML = tocNote + tocTable;
+} // end of displayToc
 
 function toggleTitleSort() {
    if (sortBy == "titleasc") { sortBy = "titledesc"; }
